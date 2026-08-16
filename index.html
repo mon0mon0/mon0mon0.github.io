@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONO. | Портфолио</title>
+
+    <!-- Favicon: минималистичный монограм в стиле сайта -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23121212'/%3E%3Ctext x='32' y='43' font-family='Arial, sans-serif' font-weight='700' font-size='28' fill='%23F5F4F1' text-anchor='middle'%3EIP%3C/text%3E%3C/svg%3E">
+
+    <!-- OG-теги: превью ссылки в Telegram / соцсетях -->
+    <meta property="og:title" content="MONO. | Портфолио">
+    <meta property="og:description" content="Скорость, Качество и Эстетика. Разработка на стыке JavaScript, AI-инструментов и дизайна.">
+    <meta property="og:image" content="https://ЗАМЕНИ-НА-СВОЙ-ДОМЕН/preview.png">
+    <meta property="og:url" content="https://ЗАМЕНИ-НА-СВОЙ-ДОМЕН">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MONO. | Портфолио">
+    <meta name="twitter:description" content="Скорость, Качество и Эстетика.">
+    <meta name="twitter:image" content="https://ЗАМЕНИ-НА-СВОЙ-ДОМЕН/preview.png">
+
+    <!-- Подключение шрифта Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1C1C1C;
+            --text-main: #F5F4F1;
+            --text-muted: #9A9992;
+            --border-color: #333330;
+            --accent-bg: #F5F4F1;
+            --accent-text: #121212;
+            /* отступ навигации от правого края окна */
+            --nav-offset: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: clip;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 40px 20px;
+            position: relative;
+        }
+
+        /* Навигация сдвинута максимально вправо без лишних отступов */
+        header {
+            position: sticky;
+            top: 20px;
+            z-index: 500;
+            display: flex;
+            justify-content: flex-end;
+            /* выходим за пределы контейнера, прижимаемся к правому краю окна */
+            width: 100vw;
+            max-width: none;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding-right: var(--nav-offset);
+            margin-bottom: 20px;
+        }
+        
+        .nav-pill {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px;
+            border-radius: 50px;
+            font-size: 16px; 
+            display: flex;
+            gap: 2px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-highlight {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            height: calc(100% - 12px);
+            width: 0;
+            background: var(--accent-bg);
+            border-radius: 50px;
+            box-shadow: 0 0 24px rgba(245, 244, 241, 0.35);
+            transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .nav-pill a {
+            position: relative;
+            z-index: 1;
+            padding: 12px 22px; 
+            border-radius: 50px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .nav-pill a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-pill a.active {
+            color: var(--accent-text);
+        }
+
+        /* Главный экран */
+        .hero {
+            text-align: center;
+            margin-top: 10px; 
+            margin-bottom: 20px; 
+            scroll-margin-top: 100px;
+        }
+
+        .hero h1 {
+            font-size: 84px; 
+            font-weight: 700;
+            letter-spacing: -3px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 24px; 
+            margin-bottom: -5px; 
+        }
+
+        /* ДИЗАЙН КАРТОЧКИ: Рамка планшета с 3D-наклоном */
+        .tablet-bezel {
+            background: #0f0f0f;
+            border-radius: 36px;
+            padding: 22px; 
+            box-shadow: 
+                0 60px 80px -20px rgba(0, 0, 0, 0.9), 
+                inset 0 2px 5px rgba(255, 255, 255, 0.08), 
+                inset 0 -2px 5px rgba(0, 0, 0, 0.9), 
+                0 0 0 1px #222; 
+            margin-bottom: 0px;
+            
+            transform: perspective(1000px) rotateX(12deg) scale(0.98);
+            transform-origin: bottom center;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        /* Экран планшета */
+        .interactive-hero-card {
+            background: radial-gradient(ellipse at top left, #242424, #0a0a0a);
+            border: 2px solid #000; 
+            border-radius: 20px; 
+            min-height: 640px; 
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.8); 
+            padding: 0 50px; 
+            gap: 20px;
+            text-align: left;
+        }
+
+        .hero-card-text {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            z-index: 2;
+            transform: translateZ(30px);
+        }
+
+        .interactive-hero-card h2 {
+            font-size: 46px; 
+            font-weight: 600;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .interactive-hero-card p {
+            color: var(--text-muted);
+            max-width: 460px;
+            margin-top: 20px;
+            font-size: 20px; 
+            line-height: 1.6;
+        }
+
+        .mascot-wrap {
+            flex-shrink: 0;
+            width: 520px; 
+            height: 540px;
+            position: relative;
+            z-index: 1;
+            transform: translateZ(10px);
+        }
+
+        #mascot-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: default;
+        }
+
+        /* ПОЛНОЭКРАННЫЕ ЛИНИИ С ТЕХНИЧЕСКИМИ МЕТКАМИ */
+        .tech-divider {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            height: 2px;
+            background-color: var(--border-color);
+            margin-top: 60px;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-margin-top: 100px;
+        }
+
+        .tech-divider span {
+            background-color: var(--bg-color);
+            padding: 0 16px;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Секция Обо мне */
+        .about-section {
+            margin-bottom: 40px; 
+            padding-top: 0px; 
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 900px;
+        }
+
+        .about-content p {
+            font-size: 22px; 
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .about-content p.highlight {
+            color: var(--text-muted);
+            font-size: 20px;
+        }
+
+        /* Пунктирная линия внутри About Me */
+        .about-dashed-divider {
+            width: 100%;
+            height: 1px;
+            border: none;
+            border-top: 1px dashed var(--border-color);
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* Перенесенные скиллы в About Me */
+        .about-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .about-skills-grid h3 {
+            font-size: 24px; 
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .about-skills-grid p {
+            color: var(--text-muted);
+            font-size: 18px; 
+            line-height: 1.7;
+        }
+
+        /* Resume */
+        .resume {
+            padding-top: 0px; 
+        }
+
+        .projects-header {
+            font-size: 56px; 
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1.5px;
+        }
+        
+        .projects-sub {
+            color: var(--text-muted);
+            font-size: 20px; 
+            margin-bottom: 50px;
+        }
+
+        /* Линия таймлайна с точками */
+        .log-timeline {
+            position: relative;
+            padding-left: 40px; 
+        }
+
+        .log-timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .log-entry {
+            position: relative;
+            margin-bottom: 40px; 
+        }
+
+        .log-entry::before {
+            content: '';
+            position: absolute;
+            left: -39px; 
+            top: 56px; 
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-bg); 
+            border: 4px solid var(--bg-color);
+            z-index: 2;
+        }
+
+        /* Карточки проектов */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 28px; 
+            padding: 50px; 
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.45);
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+            transform: translateZ(20px);
+        }
+
+        .project-card h3 {
+            font-size: 34px; 
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .purpose-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .purpose-list li {
+            color: var(--text-main);
+            font-size: 16px; 
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .purpose-list li::before {
+            content: '—'; 
+            color: var(--text-muted);
+            margin-right: 12px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 6px 14px; 
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn {
+            background: var(--accent-bg);
+            color: var(--accent-text);
+            padding: 14px 28px; 
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            opacity: 1;
+            border-color: var(--text-muted);
+            background: var(--card-bg);
+        }
+
+        .contact-cta {
+            margin-bottom: 40px;
+        }
+
+        .contact-cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .contact-cta-buttons { flex-direction: column; }
+            .contact-cta-buttons .btn { width: 100%; justify-content: center; }
+        }
+
+        /* Пустой раздел для будущих доработок */
+        .extra-section {
+            min-height: 50vh;
+        }
+
+        /* Секция Resume */
+        .resume-section {
+            padding-top: 0px;
+        }
+
+        .resume .projects-header {
+            margin-bottom: 40px;
+        }
+
+        .about-section .projects-header {
+            margin-bottom: 40px;
+        }
+
+        .resume-intro {
+            color: var(--text-main);
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            margin-bottom: 40px;
+        }
+
+        .resume-cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .resume-cols h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .resume-focus h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .resume-focus p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-main);
+            max-width: 640px;
+        }
+
+        .resume-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .resume-entry {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px 36px;
+        }
+
+        .resume-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .resume-entry h4 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .resume-date {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .resume-entry p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .resume-cols { grid-template-columns: 1fr; gap: 30px; }
+            .resume-entry { padding: 26px; }
+        }
+
+        /* Подвал */
+        footer {
+            margin-top: 40px; 
+            padding-top: 30px;
+            padding-bottom: 80px;
+        }
+
+        .footer-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 24px; 
+            letter-spacing: -0.5px;
+        }
+
+        .footer-sub {
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--text-main);
+            border-color: var(--text-muted);
+            background: #242424;
+        }
+
+        .social-links a svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Стили для адаптивного переноса дополнительной надписи */
+        .detail-text {
+            display: inline;
+        }
+
+        .scroll-top-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .scroll-top-container:hover {
+            color: var(--text-main);
+        }
+
+        .scroll-top-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: inherit;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top-container:hover .scroll-top-btn {
+            border-color: var(--text-muted);
+            background: #242424;
+        }
+
+        .scroll-top-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Grain / noise оверлей */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.06;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* Typewriter-анимация */
+        .hero h1 .typed-cursor {
+            display: inline-block;
+            width: 4px;
+            background: var(--text-main);
+            margin-left: 6px;
+            animation: blink 0.9s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Blur-in анимация */
+        .hero .blur-in {
+            opacity: 0;
+            filter: blur(8px);
+            transform: translateY(10px);
+            transition: opacity 0.9s ease, filter 0.9s ease, transform 0.9s ease;
+        }
+
+        .hero .blur-in.active {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        /* Плавное появление при скролле */
+        .reveal {
+            opacity: 0;
+            transform: translate3d(0, 40px, 0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        /* Адаптив: планшет */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 64px; }
+            .hero p { font-size: 20px; }
+
+            .tablet-bezel {
+                padding: 16px;
+                border-radius: 28px;
+                transform: perspective(800px) rotateX(10deg); 
+            }
+
+            .interactive-hero-card {
+                flex-direction: column;
+                min-height: unset;
+                padding: 50px 30px;
+                text-align: center;
+                border-radius: 16px;
+            }
+
+            .interactive-hero-card p { max-width: none; font-size: 18px; }
+            .interactive-hero-card h2 { font-size: 38px; }
+
+            .mascot-wrap {
+                width: 400px;
+                height: 420px;
+            }
+
+            .about-skills-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-content p { font-size: 18px; }
+            .projects-header { font-size: 44px; }
+            .resume-intro { font-size: 40px; }
+            .project-card { padding: 40px; }
+            .footer-top-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+        }
+
+        /* Адаптив: мобильные */
+        @media (max-width: 480px) {
+            .container { padding: 24px 16px; }
+            .hero h1 { font-size: 42px; }
+            .hero p { font-size: 18px; }
+            .resume-intro { font-size: 30px; }
+            header { width: auto; max-width: 100%; margin-left: 0; margin-right: 0; padding-right: 0; justify-content: center; }
+            .nav-pill { gap: 2px; padding: 6px; flex-wrap: wrap; justify-content: center; }
+            .nav-pill a { padding: 10px 16px; font-size: 14px; }
+            
+            .interactive-hero-card {
+                padding: 24px 16px;
+                gap: 10px;
+            }
+
+            .mascot-wrap { 
+                width: 220px; 
+                height: 220px; 
+                margin: 0 auto; 
+            }
+            
+            .project-card { padding: 30px; }
+            .project-card h3 { font-size: 26px; }
+            .project-content { margin-left: 0; }
+            
+            .log-timeline { padding-left: 20px; }
+            .log-entry::before { left: -24px; top: 40px; }
+            
+            .social-links { gap: 16px; }
+
+            /* Перенос надписи под копирайт на мобильных устройствах */
+            .detail-text {
+                display: block;
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (window.location.hash) {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        window.addEventListener('load', () => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        });
+    </script>
+
+    <div class="grain-overlay"></div>
+
+    <div class="container">
+        <header>
+            <nav class="nav-pill" aria-label="Основная навигация">
+                <span class="nav-highlight" aria-hidden="true"></span>
+                <a href="#home" class="active" aria-label="На главную">Home</a>
+                <a href="#about" aria-label="К разделу обо мне">About</a>
+                <a href="#projects" aria-label="К разделу проектов">Projects</a>
+                <a href="#resume" aria-label="К разделу резюме">Resume</a>
+            </nav>
+        </header>
+
+        <section class="hero reveal" id="home">
+            <p class="blur-in" style="transition-delay: 0.1s;">Привет,</p>
+            <h1 id="hero-title" aria-label="Я - Mono"><span id="typed-name"></span><span class="typed-cursor" aria-hidden="true"></span></h1>
+            <p class="blur-in" style="transition-delay: 0.6s;">Скорость. Качество. Эстетика.</p>
+
+            <div class="tablet-bezel">
+                <div class="interactive-hero-card">
+                    <div class="hero-card-text">
+                        <h2>Построение с намерением</h2>
+                        <p>Каждый проект начинается с проблемы, которую стоит решить. Баланс между идеальным визуалом и молниеносным запуском.</p>
+                    </div>
+                    <div class="mascot-wrap">
+                        <canvas id="mascot-canvas" aria-hidden="true"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Линия под телевизором с надписью ABOUT ME -->
+        <div class="tech-divider reveal" id="about">
+            <span>[ SECTION // ABOUT ME ]</span>
+        </div>
+
+        <section class="about-section reveal">
+            <h2 class="projects-header">Изучаю. Создаю. Расту.</h2>
+            <div class="about-content">
+                <p>Меня зовут Иван, мне 17 лет, живу в Воронеже. Учусь в 10 классе. Помимо школы прохожу курсы по диджитал-маркетингу и сам изучаю JavaScript. Мне интересно разбираться, как устроены сайты и продукты изнутри: не просто копировать готовые решения, а понимать логику, совмещать ручной код с AI и no-code инструментами и доводить проект до рабочего результата.</p>
+                <p class="highlight">Хочу, чтобы сайты, которые я делаю, работали быстро и выглядели аккуратно.</p>
+            </div>
+
+            <!-- Пунктирная линия внутри About Me -->
+            <hr class="about-dashed-divider">
+
+            <!-- Сетка навыков внутри About Me -->
+            <div class="about-skills-grid">
+                <div>
+                    <h3>Динамика</h3>
+                    <p>Использую связку ИИ, No-code инструментов и уверенную базу в программировании, чтобы создавать рабочие продукты в разы быстрее классической разработки.</p>
+                </div>
+                <div>
+                    <h3>Форма</h3>
+                    <p>Я делаю упор на дизайн, чистый визуал и микровзаимодействия.</p>
+                </div>
+                <div>
+                    <h3>Структура</h3>
+                    <p>Создаю надежную архитектуру на JavaScript. Все работает так же плавно, как и выглядит.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Линия над проектами с надписью PROJECTS -->
+        <div class="tech-divider reveal" id="projects">
+            <span>[ SECTION // PROJECTS ]</span>
+        </div>
+
+        <section class="resume">
+            <h2 class="projects-header">Работы, которыми горжусь.</h2>
+            <div class="log-timeline">
+                <div class="log-entry reveal">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>[ Название проекта 1 ]</h3>
+                            <p>Краткое описание того, в чем заключалась суть проекта и для кого он создавался. Если проект в активной разработке, об этом можно смело написать прямо здесь.</p>
+                            <ul class="purpose-list">
+                                <li>Задача 1 (например: Создать вайб премиального бренда)</li>
+                                <li>Задача 2 (например: Увеличить конверсию)</li>
+                            </ul>
+                            <div class="tags">
+                                <span class="tag">HTML / CSS</span>
+                                <span class="tag">AI Tools</span>
+                            </div>
+                            <a href="#" class="btn" aria-label="Открыть демо проекта 01">Live Demo <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="log-entry reveal">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>[ Название проекта 2 ]</h3>
+                            <p>Оставьте пустым или заполните позже.</p>
+                            <ul class="purpose-list">
+                                <li>Деталь 1</li>
+                            </ul>
+                            <div class="tags">
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <a href="#" class="btn" aria-label="Открыть демо проекта 02">Live Demo <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="log-entry reveal">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>[ Название проекта 3 ]</h3>
+                            <p>Оставьте пустым или заполните позже.</p>
+                            <ul class="purpose-list">
+                                <li>Деталь 1</li>
+                            </ul>
+                            <div class="tags">
+                                <span class="tag">No-code</span>
+                            </div>
+                            <a href="#" class="btn" aria-label="Открыть демо проекта 03">Live Demo <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="log-entry reveal">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>[ Название проекта 4 ]</h3>
+                            <p>Оставьте пустым или заполните позже.</p>
+                            <ul class="purpose-list">
+                                <li>Деталь 1</li>
+                            </ul>
+                            <div class="tags">
+                                <span class="tag">Web Design</span>
+                            </div>
+                            <a href="#" class="btn" aria-label="Открыть демо проекта 04">Live Demo <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="log-entry reveal">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>[ Название проекта 5 ]</h3>
+                            <p>Оставьте пустым или заполните позже.</p>
+                            <ul class="purpose-list">
+                                <li>Деталь 1</li>
+                            </ul>
+                            <div class="tags">
+                                <span class="tag">Vibecoding</span>
+                            </div>
+                            <a href="#" class="btn" aria-label="Открыть демо проекта 05">Live Demo <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Пустой раздел (Resume) -->
+        <div class="tech-divider reveal" id="resume">
+            <span>[ SECTION // RESUME ]</span>
+        </div>
+        <section class="resume-section reveal">
+            <p class="projects-sub resume-intro">Стек, самообразование и подход к работе.</p>
+
+            <div class="resume-cols">
+                <div>
+                    <h3>Делаю</h3>
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML / CSS</span>
+                        <span class="tag">AI-инструменты</span>
+                        <span class="tag">No-code</span>
+                    </div>
+                </div>
+                <div>
+                    <h3>Изучаю</h3>
+                    <div class="tags">
+                        <span class="tag">Продвинутый JS (async, DOM)</span>
+                        <span class="tag">Диджитал-маркетинг</span>
+                        <span class="tag">Английский</span>
+                    </div>
+                </div>
+                <div>
+                    <h3>Мышление</h3>
+                    <div class="tags">
+                        <span class="tag">Визуальная эстетика</span>
+                        <span class="tag">Структура и ритм</span>
+                        <span class="tag">Минимализм</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="about-dashed-divider">
+
+            <div class="resume-timeline">
+                <div class="resume-entry">
+                    <div class="resume-entry-header">
+                        <h4>Разработка сайтов и лендингов</h4>
+                        <span class="resume-date">2026 — н. в.</span>
+                    </div>
+                    <p>Собираю различные сайты на связке HTML/CSS/JS и AI-инструментов. Упор на дизайн, микроанимации и скорость реализации.</p>
+                </div>
+
+                <div class="resume-entry">
+                    <div class="resume-entry-header">
+                        <h4>Изучение JavaScript</h4>
+                        <span class="resume-date">[ укажи год начала ] — н. в.</span>
+                    </div>
+                    <p>Прохожу программу самостоятельно: от основ синтаксиса до DOM, асинхронности и небольших проектов. Практика идёт параллельно с реальными задачами.</p>
+                </div>
+
+                <div class="resume-entry">
+                    <div class="resume-entry-header">
+                        <h4>Курсы диджитал-маркетинга</h4>
+                        <span class="resume-date">[ укажи год начала ] — н. в.</span>
+                    </div>
+                    <p>Разбираюсь в продвижении, аналитике и работе с аудиторией — как продукт доходит до пользователя и что заставляет его остаться.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Линия перед подвалом с надписью о контактах -->
+        <div class="tech-divider reveal">
+            <span>[ SYSTEM // CONTACT & CONNECT ]</span>
+        </div>
+
+        <section class="contact-cta reveal">
+            <h2 class="projects-header">Открыт к предложениям.</h2>
+            <p class="projects-sub">Отвечаю быстро — в Telegram или на почту.</p>
+            <div class="contact-cta-buttons">
+                <a href="mailto:pokusaeaivan@gmail.com" class="btn" aria-label="Написать на почту">Написать на почту <span>→</span></a>
+                <a href="https://t.me/ivann1206" class="btn btn-outline" aria-label="Написать в Telegram">Telegram <span>→</span></a>
+            </div>
+        </section>
+
+        <!-- Подвал -->
+        <footer class="reveal">
+            <div class="footer-top-row">
+                <div class="footer-logo-wrap">
+                    <div class="footer-logo">Mono.</div>
+                    <div class="footer-sub">Скорость. Качество. Эстетика.</div>
+                </div>
+                <div class="social-links">
+                    <a href="mailto:pokusaeaivan@gmail.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="https://t.me/ivann1206" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27 0-.12.07-1.99 1.25-5.62 3.69-.53.36-1.01.54-1.44.53-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.05-.78 4.1-1.79 6.84-2.97 8.22-3.54 3.91-1.63 4.72-1.91 5.25-1.92.12 0 .38.03.55.17.14.12.18.28.2.45-.02.07-.02.13-.04.2z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Пунктирная линия как в About Me -->
+            <hr class="about-dashed-divider">
+
+            <div class="footer-bottom-row">
+                <span class="footer-copy">© 2026 Mono. <span class="detail-text">С вниманием к деталям.</span></span>
+                <a href="#home" class="scroll-top-container" aria-label="Наверх">
+                    <span>Back to top.</span>
+                    <div class="scroll-top-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12 4L4 12H9V20H15V12H20L12 4Z"/></svg>
+                    </div>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Скрипты: Скролл и наклон карточек -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // 0. Облако частиц-плазма: уменьшенный радиус (1.3), чтобы не выходить за рамки
+        (function initParticleSphere() {
+            const wrap = document.querySelector('.mascot-wrap');
+            const canvas = document.getElementById('mascot-canvas');
+            if (!wrap || !canvas || typeof THREE === 'undefined') return;
+
+            const scene = new THREE.Scene();
+            
+            const camera = new THREE.PerspectiveCamera(45, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
+            
+            const isMobile = window.innerWidth <= 480;
+            camera.position.set(0, 0, isMobile ? 5.8 : 4.5);
+
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(wrap.clientWidth, wrap.clientHeight, false);
+
+            const PARTICLE_COUNT = isMobile ? 900 : 2200;
+            const radius = 1.3; // Уменьшенный радиус сферы для идеальной посадки в рамку
+            const basePositions = new Float32Array(PARTICLE_COUNT * 3);
+            const positions = new Float32Array(PARTICLE_COUNT * 3);
+
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos(2 * Math.random() - 1);
+                const r = radius * (0.82 + Math.random() * 0.32);
+                const x = r * Math.sin(phi) * Math.cos(theta);
+                const y = r * Math.sin(phi) * Math.sin(theta);
+                const z = r * Math.cos(phi);
+                basePositions[i * 3] = x;
+                basePositions[i * 3 + 1] = y;
+                basePositions[i * 3 + 2] = z;
+                positions[i * 3] = x;
+                positions[i * 3 + 1] = y;
+                positions[i * 3 + 2] = z;
+            }
+
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+            const material = new THREE.PointsMaterial({
+                color: 0xF5F4F1,
+                size: 0.035,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                sizeAttenuation: true
+            });
+
+            const points = new THREE.Points(geometry, material);
+            scene.add(points);
+
+            const raycaster = new THREE.Raycaster();
+            const mouseNDC = new THREE.Vector2(0, 0);
+            const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+            let cursorWorld = new THREE.Vector3(0, 0, 50);
+            let hasPointer = false;
+
+            function updatePointer(clientX, clientY) {
+                const rect = wrap.getBoundingClientRect();
+                hasPointer = clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
+                if (!hasPointer) return;
+                mouseNDC.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+                mouseNDC.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+                raycaster.setFromCamera(mouseNDC, camera);
+                raycaster.ray.intersectPlane(plane, cursorWorld);
+            }
+
+            window.addEventListener('mousemove', (e) => updatePointer(e.clientX, e.clientY));
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches && e.touches[0]) updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+            }, { passive: true });
+            wrap.addEventListener('mouseleave', () => { hasPointer = false; });
+
+            function onResize() {
+                if (!wrap.clientWidth || !wrap.clientHeight) return;
+                camera.aspect = wrap.clientWidth / wrap.clientHeight;
+                camera.position.z = window.innerWidth <= 480 ? 5.8 : 4.5;
+                camera.updateProjectionMatrix();
+                renderer.setSize(wrap.clientWidth, wrap.clientHeight, false);
+            }
+            window.addEventListener('resize', onResize);
+
+            const current = new THREE.Vector3();
+            const dir = new THREE.Vector3();
+            const localCursor = new THREE.Vector3();
+            const invMatrix = new THREE.Matrix4();
+            const interactRadius = 1.15;
+            const pushStrength = 0.9;
+
+            let t = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                t += 0.003;
+
+                points.rotation.y = t * 0.6;
+                points.rotation.x = Math.sin(t * 0.3) * 0.15;
+                points.updateMatrixWorld(true);
+
+                invMatrix.copy(points.matrixWorld).invert();
+                localCursor.copy(cursorWorld).applyMatrix4(invMatrix);
+
+                const posAttr = geometry.attributes.position;
+                const arr = posAttr.array;
+
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const ix = i * 3, iy = i * 3 + 1, iz = i * 3 + 2;
+                    const bx = basePositions[ix], by = basePositions[iy], bz = basePositions[iz];
+
+                    let tx = bx, ty = by, tz = bz;
+
+                    if (hasPointer) {
+                        current.set(arr[ix], arr[iy], arr[iz]);
+                        const dist = current.distanceTo(localCursor);
+                        if (dist < interactRadius) {
+                            const force = (1 - dist / interactRadius) * pushStrength;
+                            dir.copy(current).sub(localCursor).normalize();
+                            tx = bx + dir.x * force;
+                            ty = by + dir.y * force;
+                            tz = bz + dir.z * force;
+                        }
+                    }
+
+                    arr[ix] += (tx - arr[ix]) * 0.08;
+                    arr[iy] += (ty - arr[iy]) * 0.08;
+                    arr[iz] += (tz - arr[iz]) * 0.08;
+                }
+                posAttr.needsUpdate = true;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        })();
+    </script>
+    <script>
+        const nameText = 'Я - Mono';
+        const typedEl = document.getElementById('typed-name');
+        let charIndex = 0;
+
+        function typeNextChar() {
+            if (charIndex < nameText.length) {
+                typedEl.textContent += nameText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeNextChar, 55);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeNextChar, 200);
+            document.querySelectorAll('.hero .blur-in').forEach(el => {
+                requestAnimationFrame(() => el.classList.add('active'));
+            });
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                
+                const innerCard = entry.target.classList.contains('project-card') 
+                    ? entry.target 
+                    : entry.target.querySelector('.project-card');
+                    
+                if (innerCard) {
+                    setTimeout(() => innerCard.classList.add('tilt-ready'), 1300);
+                }
+            });
+        }, observerOptions);
+        
+        function startReveal() {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+        if (document.fonts && document.fonts.ready) {
+            Promise.race([
+                document.fonts.ready,
+                new Promise(resolve => setTimeout(resolve, 1500))
+            ]).then(startReveal);
+        } else {
+            startReveal();
+        }
+
+        const projectCards = document.querySelectorAll('.project-card');
+        const NEUTRAL_TILT = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        const TILT_RANGE = 10; 
+
+        projectCards.forEach(card => {
+            let currentX = 0, currentY = 0, targetX = 0, targetY = 0;
+            let isHovered = false, rafId = null;
+
+            function loop() {
+                const speed = isHovered ? 0.35 : 0.18;
+                currentX += (targetX - currentX) * speed;
+                currentY += (targetY - currentY) * speed;
+                card.style.transform = `perspective(1000px) rotateX(${currentX}deg) rotateY(${currentY}deg) translateY(${isHovered ? -4 : 0}px)`;
+
+                const settled = Math.abs(targetX - currentX) < 0.02 && Math.abs(targetY - currentY) < 0.02;
+                if (isHovered || !settled) {
+                    rafId = requestAnimationFrame(loop);
+                } else {
+                    currentX = 0;
+                    currentY = 0;
+                    card.style.transform = NEUTRAL_TILT;
+                    rafId = null;
+                }
+            }
+
+            function ensureLoop() {
+                if (!rafId) rafId = requestAnimationFrame(loop);
+            }
+
+            card.addEventListener('mousemove', (e) => {
+                if (!card.classList.contains('tilt-ready')) return;
+                isHovered = true;
+                const rect = card.getBoundingClientRect();
+                targetY = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * TILT_RANGE;
+                targetX = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -TILT_RANGE;
+                ensureLoop();
+            });
+
+            card.addEventListener('mouseleave', () => {
+                isHovered = false;
+                targetX = 0;
+                targetY = 0;
+                ensureLoop();
+            });
+        });
+
+        const navPill = document.querySelector('.nav-pill');
+        const navHighlight = document.querySelector('.nav-highlight');
+        const navLinks = document.querySelectorAll('.nav-pill a');
+        const spySections = [
+            { id: 'home', el: document.getElementById('home') },
+            { id: 'about', el: document.getElementById('about') },
+            { id: 'projects', el: document.getElementById('projects') },
+            { id: 'resume', el: document.getElementById('resume') }
+        ];
+
+        function moveHighlight(activeLink) {
+            if (!activeLink || !navHighlight) return;
+            navHighlight.style.width = `${activeLink.offsetWidth}px`;
+            navHighlight.style.transform = `translateX(${activeLink.offsetLeft - 6}px)`;
+        }
+
+        function updateActiveNav() {
+            const scrollPos = window.scrollY + window.innerHeight / 3;
+            let currentId = 'home';
+            spySections.forEach(section => {
+                if (section.el && section.el.offsetTop <= scrollPos) {
+                    currentId = section.id;
+                }
+            });
+            let activeLink = null;
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                const isActive = (currentId === 'home' && href === '#home') || href === `#${currentId}`;
+                link.classList.toggle('active', isActive);
+                if (isActive) activeLink = link;
+            });
+            moveHighlight(activeLink);
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('resize', updateActiveNav);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(updateActiveNav);
+        }
+        updateActiveNav();
+    </script>
+</body>
+</html>
