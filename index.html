@@ -72,8 +72,6 @@
             z-index: 500;
             display: flex;
             justify-content: flex-end;
-            align-items: center;
-            gap: 16px;
             /* выходим за пределы контейнера, прижимаемся к правому краю окна */
             width: 100vw;
             max-width: none;
@@ -126,38 +124,6 @@
         }
 
         .nav-pill a.active {
-            color: var(--accent-text);
-        }
-
-        .lang-switch {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 6px;
-            border-radius: 50px;
-            display: flex;
-            gap: 2px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .lang-switch a {
-            padding: 12px 16px;
-            border-radius: 50px;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lang-switch a:hover {
-            color: var(--text-main);
-        }
-
-        .lang-switch a.active {
-            background: var(--accent-bg);
             color: var(--accent-text);
         }
 
@@ -619,43 +585,6 @@
             .resume-entry { padding: 26px; }
         }
 
-        /* Адаптив: мобильные */
-        @media (max-width: 480px) {
-            .container { padding: 24px 16px; }
-            .hero h1 { font-size: 42px; }
-            .hero p { font-size: 18px; }
-            .resume-intro { font-size: 30px; }
-            header { width: auto; max-width: 100%; margin-left: 0; margin-right: 0; padding-right: 0; justify-content: center; flex-wrap: wrap; }
-            .nav-pill { gap: 2px; padding: 6px; flex-wrap: wrap; justify-content: center; }
-            .nav-pill a { padding: 10px 16px; font-size: 14px; }
-            
-            .interactive-hero-card {
-                padding: 24px 16px;
-                gap: 10px;
-            }
-
-            .mascot-wrap { 
-                width: 220px; 
-                height: 220px; 
-                margin: 0 auto; 
-            }
-            
-            .project-card { padding: 30px; }
-            .project-card h3 { font-size: 26px; }
-            .project-content { margin-left: 0; }
-            
-            .log-timeline { padding-left: 20px; }
-            .log-entry::before { left: -24px; top: 40px; }
-            
-            .social-links { gap: 16px; }
-
-            /* Перенос надписи под копирайт на мобильных устройствах */
-            .detail-text {
-                display: block;
-                margin-top: 4px;
-            }
-        }
-
         /* Подвал */
         footer {
             margin-top: 40px; 
@@ -871,6 +800,42 @@
             .footer-top-row { flex-direction: column; align-items: flex-start; gap: 20px; }
         }
 
+        /* Адаптив: мобильные */
+        @media (max-width: 480px) {
+            .container { padding: 24px 16px; }
+            .hero h1 { font-size: 42px; }
+            .hero p { font-size: 18px; }
+            .resume-intro { font-size: 30px; }
+            header { width: auto; max-width: 100%; margin-left: 0; margin-right: 0; padding-right: 0; justify-content: center; }
+            .nav-pill { gap: 2px; padding: 6px; flex-wrap: wrap; justify-content: center; }
+            .nav-pill a { padding: 10px 16px; font-size: 14px; }
+            
+            .interactive-hero-card {
+                padding: 24px 16px;
+                gap: 10px;
+            }
+
+            .mascot-wrap { 
+                width: 220px; 
+                height: 220px; 
+                margin: 0 auto; 
+            }
+            
+            .project-card { padding: 30px; }
+            .project-card h3 { font-size: 26px; }
+            .project-content { margin-left: 0; }
+            
+            .log-timeline { padding-left: 20px; }
+            .log-entry::before { left: -24px; top: 40px; }
+            
+            .social-links { gap: 16px; }
+
+            /* Перенос надписи под копирайт на мобильных устройствах */
+            .detail-text {
+                display: block;
+                margin-top: 4px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -898,11 +863,6 @@
                 <a href="#projects" aria-label="К разделу проектов">Projects</a>
                 <a href="#resume" aria-label="К разделу резюме">Resume</a>
             </nav>
-            
-            <div class="lang-switch" aria-label="Выбор языка">
-                <a href="#" class="active" aria-label="Русская версия">RU</a>
-                <a href="en.html" aria-label="English version">EN</a>
-            </div>
         </header>
 
         <section class="hero reveal" id="home">
